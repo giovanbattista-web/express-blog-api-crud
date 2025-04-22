@@ -2,9 +2,13 @@ const express = require('express');
 
 const router = express.Router();
 
+const pietanze = require ('../data/posts_data.js'); 
+
 const controller_dolce = require ('../controllers/controller_dolce');
 
-router.get('/', controller_dolce.index);
+router.get('/', (req, res) =>{
+    res.json(pietanze);
+});
    
 router.get('/:id', controller_dolce.show);
 
