@@ -1,3 +1,5 @@
+const piatti = require('../data/posts_data')
+
 function index(req, res) {
     res.send('Lista dei post');
 }
