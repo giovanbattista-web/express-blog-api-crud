@@ -6,7 +6,7 @@ router.get('/',(req,res) =>{
     res.send('Lista dei post');
 })
 router.get('/:id',(req,res) =>{
-    res.send(`Dettaglio del post {req.params.id}`);
+    res.send(`Dettaglio del post ${req.params.id}`);
 })
 router.post('/',(req,res) =>{
     res.send("Inserimento di un nuovo post");
