@@ -10,7 +10,11 @@ router.get('/', (req, res) =>{
     res.json(pietanze);
 });
    
-router.get('/:id', controller_dolce.show);
+router.get('/:id', (req, res) =>{
+    const id= parseInt(req.params.id);
+    const pietanza = pietanze.find(pietanza => pietanza.id === id);
+    res.json(pietanza);
+});
 
 router.post('/', controller_dolce.store);
 
