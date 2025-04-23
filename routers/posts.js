@@ -30,7 +30,13 @@ router.put('/:id', controller_dolce.update);
 
 router.patch('/:id', controller_dolce.modify);
 
-router.delete('/:id', controller_dolce.destroy);
+router.delete('/:id',(req, res) =>{
+    const id = parseInt(req.params.id);
+    const pietanza = pietanze.find(pietanza => pietanza.id === id);
+    pietanze.splice(pietanze.indexOf(pietanza),1);
+    res.json(pietanze);
+
+});
 
 module.exports = router;
 
