@@ -33,9 +33,18 @@ router.patch('/:id', controller_dolce.modify);
 router.delete('/:id',(req, res) =>{
     const id = parseInt(req.params.id);
     const pietanza = pietanze.find(pietanza => pietanza.id === id);
+    if (!pietanza){
+        res.status(404);
+        return res.json({
+            error: "Not Found",
+            message : "Pietanza non trovata"
+        })
+    }
     pietanze.splice(pietanze.indexOf(pietanza),1);
-    res.json(pietanze);
-
+    res.sendStatus(204);  
+    console.log(pietanze);  
+    
+    
 });
 
 module.exports = router;
