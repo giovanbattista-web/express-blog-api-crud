@@ -10,6 +10,7 @@ function show(req, res) {
 
 
 function store(req, res) {
+    console.log(req.body); 
     res.send("Inserimento di un nuovo post");
 }
 
@@ -25,4 +26,4 @@ function destroy(req, res) {
     res.send(`Cancellazione del post ${req.params.id}`);
 }
 
-module.exports = {index, show, store, update, modify, destroy};
+module.exports = { index, show, store, update, modify, destroy };
