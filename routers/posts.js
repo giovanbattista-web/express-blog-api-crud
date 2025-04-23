@@ -13,6 +13,14 @@ router.get('/', (req, res) =>{
 router.get('/:id', (req, res) =>{
     const id= parseInt(req.params.id);
     const pietanza = pietanze.find(pietanza => pietanza.id === id);
+
+    if (!pietanza){
+        res.status(404);
+        return res.json({
+            error: "Not Found",
+            message : "Pietanza non trovata"
+        })
+    }
     res.json(pietanza);
 });
 
