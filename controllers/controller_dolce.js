@@ -32,7 +32,19 @@ function store(req, res) {
 
 function update(req, res) {
     const id = parseInt(req.params.id);
-    res.send(`Modifica totale del post ${req.params.id}`);
+
+    const post = piatti.find( post => post.id === id);
+
+    post.title = req.body.title;
+    post.content = req.body.content;
+    post.image = req.body.image;
+    post.tags = req.body.tags;
+
+    console.log(piatti);
+
+    res.json(piatti);
+
+    // res.send(`Modifica totale del post ${req.params.id}`);
 }
 
 function modify(req, res) {
