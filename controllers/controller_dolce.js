@@ -1,4 +1,4 @@
-const piatti = require('../data/posts_data')
+const piatti = require('../data/posts_data.js')
 
 function index(req, res) {
     res.send('Lista dei post');
@@ -10,11 +10,28 @@ function show(req, res) {
 
 
 function store(req, res) {
-    console.log(req.body); 
-    res.send("Inserimento di un nuovo post");
+    // console.log(req.body);
+    const newId = posts[posts.length - 1].id + 1;
+    
+    const {title,content,image,tags} = req.body
+    const newPost = {
+                id : newId,
+                title : title,
+                content : content,
+                image : image,
+                tags : tags
+    }
+    pietanze.push(newPost);
+   
+    console.log(posts);
+
+    res.status(201);
+
+    res.json(newPost)
 }
 
 function update(req, res) {
+    const id = parseInt(req.params.id);
     res.send(`Modifica totale del post ${req.params.id}`);
 }
 
