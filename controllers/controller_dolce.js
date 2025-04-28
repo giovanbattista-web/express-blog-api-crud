@@ -11,9 +11,9 @@ function show(req, res) {
 
 function store(req, res) {
     // console.log(req.body);
-    const newId = posts[posts.length - 1].id + 1;
+    const newId = piatti[piatti.length - 1].id + 1;
     
-    const {title,content,image,tags} = req.body
+    const {title,content,image,tags} = req.body;
     const newPost = {
                 id : newId,
                 title : title,
@@ -21,9 +21,9 @@ function store(req, res) {
                 image : image,
                 tags : tags
     }
-    pietanze.push(newPost);
+    piatti.push(newPost);
    
-    console.log(posts);
+    console.log(piatti);
 
     res.status(201);
 
