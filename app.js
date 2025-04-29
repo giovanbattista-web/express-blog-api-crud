@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+const errorsHandler = require("./middlewares/errorsHandler");
+const notFound = require("./middlewares/notFound");
+
 app.use(express.static('public'));
  
 app.use(express.json());
@@ -14,7 +17,7 @@ const routerPosts = require('./routers/posts.js');
 
 app.use('/posts', routerPosts);
 
-/*
+
 app.get('/posts', (req, res) => {
     res.send("Lista dei post");
 })
@@ -33,8 +36,10 @@ app.patch('/posts/:id', (req, res) => {
 app.delete('/posts/:id', (req, res) => {
     res.send("Cancellazione del post" + req.params.id);
 })
-*/
 
+
+app.use(errorsHandler);
+app.use(notFound);
 app.listen(port, () => {
     console.log(`Server in ascolto alla porta ${port}`);
 })

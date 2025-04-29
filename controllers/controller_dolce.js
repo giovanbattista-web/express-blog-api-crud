@@ -1,10 +1,16 @@
 const piatti = require('../data/posts_data.js')
 
 function index(req, res) {
-    res.send('Lista dei post');
+
+    // metodo inesistente 
+    shortCut();
+    
+res.send('Lista dei post');
+
 }
 
 function show(req, res) {
+
     res.send(`Dettaglio del post ${req.params.id}`);
 }
 
