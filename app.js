@@ -1,45 +1,27 @@
+// IMPORTO EXPRESS
 const express = require('express');
+
+// INIZIALIZZO EXPRESS NELLA VARIABILE APP 
 const app = express();
+
+// INIZIALIZZO IL NUMERO DI PORTA 
 const port = 3000;
 
-const errorsHandler = require("./middlewares/errorsHandler");
-const notFound = require("./middlewares/notFound");
-
-app.use(express.static('public'));
- 
+// INDICHIAMO AD EXPRESS DI TRATTARE IL BODY DELLE RICHIESTE COME JSON 
 app.use(express.json());
 
+// IMPORTO IL ROUTER 
+const postRouter = require('./router/posts.js');
+
+// UTILIZZO IL ROUTER PER DEFINIRE LE VARIE ROTTE PER I POST
+app.use('/posts', postRouter);
+
+// DEFINISCO LA ROTTA BASE 
 app.get('/', (req, res) => {
-    res.send("Home Page");
+    res.send("Homepage");
 })
 
-const routerPosts = require('./routers/posts.js');
-
-app.use('/posts', routerPosts);
-
-
-app.get('/posts', (req, res) => {
-    res.send("Lista dei post");
-})
-app.get('/posts/:id', (req, res) => {
-    res.send("Dettaglio del post" + req.params.id);
-})
-app.post('/posts', (req, res) => {
-    res.send("Inserimento di un nuovo post");
-})
-app.put('/posts/:id', (req, res) => {
-    res.send("Modifica totale del post" + req.params.id);
-})
-app.patch('/posts/:id', (req, res) => {
-    res.send("Modifica parziale del post" + req.params.id);
-})
-app.delete('/posts/:id', (req, res) => {
-    res.send("Cancellazione del post" + req.params.id);
-})
-
-
-app.use(errorsHandler);
-app.use(notFound);
+// DICIAMO AL SERVER DI RIMANERE IN ASCOLTO SULLA PORTA 3000 
 app.listen(port, () => {
-    console.log(`Server in ascolto alla porta ${port}`);
+    console.log(`Server in ascolto sulla porta ${port}`);
 })

@@ -1,8 +1,8 @@
-function notFound(res, req, next){
+function notFound(res, req, next) {
     res.status(404);
     res.json({
-        error : "Not Found",
-        message : "Pagina non trovata"
+        error: "Not Found",
+        message: "Pagina non trovata"
     });
 };
 
